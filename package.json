@@ -5,13 +5,13 @@
     "dev:server": "live-server",
     "dev:sass": "node-sass source/scss/style.scss --watch --output=compiled/css --output-style=compressed --source-map=true",
     "dev": "run-p dev:*",
-    "html": "cat index.html | htmlhint stdin",
+    "html": "htmlhint index.html",
     "lintscss": "stylelint 'source/scss/*.scss'",
     "stand-js": "standard",
-    "build": "run-s html lintscss stand-js",
+    "lint": "run-s html lintscss stand-js",
     "build:sass": "node-sass source/scss/style.scss --output=compiled/css --output-style=compressed --source-map=true",
     "deploy:surge": "surge --project . --domain https://lizehua3-kg-tgc7noax99ajvzzg.surge.sh/",
-    "deploy": "run-s build:* deploy:surge"
+    "deploy": "run-s lint build:* deploy:surge"
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
